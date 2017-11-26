@@ -29,3 +29,9 @@ Categorical data would be visualized in a bar chart (for example: Age group ~ Su
 Discrete data would be visualized in a box plot (for example: Systolic Blood Pressure ~ Survival).
 
 This information would be displayed in a facet.
+
+## Author
+
+Ivan Despot
+
+November 2017
