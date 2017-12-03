@@ -1,15 +1,11 @@
 # Exploration of Data from the Intensive Care Unit (ICU)
+  The Intensive Care Unit is responsible for some of the most ill patients in the hospital environment. The outcomes are often very poor, and the overall mortality rate is approximately 50%. Doctors and researchers continue to study ways of improving these outcomes. 
 
-  For this project, I will analyze the Intensive Care Unit (ICU) data set from the **Stat2Data** package in R. This public data set contains a sample of 200 patients, and the following 9 variables:
+  For this project, I will analyze the Intensive Care Unit (ICU) data set from the **Stat2Data** package in R. This public data set contains a sample of 200 patients, and 9 variables. Some examples are as follows:
 
   * Patient ID Code
   * Age (in years)
   * Age Group (1 = Young[under 50]; 2 = Middle[50-69]; 3 = Old[70+])
-  * Sex (1 = Female; 0 = Male)
-  * Infection (1 = Infection Suspected; 0 = No Infection)
-  * Systolic Blood Pressure (in mmHg)
-  * Pulse (beats per minute)
-  * Emergency (1 = Emergency Admission; 0 = Elective Admission)
   * Survival (1 = Lived to be Discharged; 0 = Deceased)
 
 ## How to load in the data:
