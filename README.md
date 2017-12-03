@@ -12,6 +12,14 @@
   * Emergency (1 = Emergency Admission; 0 = Elective Admission)
   * Survival (1 = Lived to be Discharged; 0 = Deceased)
 
+## How to load in the data:
+
+In your command line, while in the directory for this project -  run the following:
+
+`Rscript read_in_data_test.R`
+
+This script will read in the ICU dataset, and write a new file named `icu_data.csv` in the `data` folder.
+
 ## Research Question:
 
 I seek to determine which variables  are most predictive of survival in the ICU.
