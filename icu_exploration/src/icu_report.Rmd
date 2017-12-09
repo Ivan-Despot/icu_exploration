@@ -8,6 +8,7 @@ output: pdf_document
 Usage: Rscript -e 'ezknitr::ezknit("src/icu_report.Rmd", out_dir = "results")'
 
 ```{r}
+.libPaths(c("C:/Users/Ivan/Documents/R/win-library/3.4", "C:/Program Files/R/R-3.4.1/library" ))
 library(tidyverse)
 library(forcats)
 library(ezknitr)
@@ -25,6 +26,13 @@ icu_data <- read.csv("https://raw.githubusercontent.com/vincentarelbundock/Rdata
 
 ```{r}
 head(icu_data, 10)
+```
+
+```{r}
+#read in filtered data
+icu_filter <- read.csv("../results/icu_data_filter.csv", header = T, sep = ",")
+
+head(icu_filter, 10)
 ```
 
 
@@ -51,6 +59,11 @@ This figure demonstrates how the patient's infection status impacts their surviv
 
 An important factor when examining the survival rates in an ICU is the case type. These can be classified into two broad terms: emergency and elective. Elective is where it is decided that it is in the best interest of the patient to recieve treatment in the ICU, for close observation and care. On the otherhand, emergency cases occur at unpredictably, and the patient usually arrives in worse condition than the elective case patient who is typically already stabilized. From our graph, we can see a significant difference between the two case types. Emergency cases we associated with 25% of deaths in the ICU, while elective cases corresponded to less than < 10% of deaths.
 
+```{r}
+#for milestone 3
+#ezknitr::ezknit("icu_report.Rmd", out_dir = "results")
+
+```
 
 
 
