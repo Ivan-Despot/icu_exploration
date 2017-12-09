@@ -1,0 +1,56 @@
+---
+title: 'ICU Report'
+author: "Ivan Despot"
+date: "December 9, 2017"
+output: pdf_document
+---
+
+Usage: Rscript -e 'ezknitr::ezknit("src/icu_report.Rmd", out_dir = "results")'
+
+```{r}
+library(tidyverse)
+library(forcats)
+library(ezknitr)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.width = 10, fig.height = 8, fig.align = "center")
+```
+
+```{r}
+#read in raw data
+icu_data <- read.csv("https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/Stat2Data/ICU.csv", 
+                       header = T, sep = ",")
+```
+
+```{r}
+head(icu_data, 10)
+```
+
+
+**Age vs. Survival**
+\begin{center}
+\includegraphics{../results/age_vs_survival_bxplt}
+\end{center}
+
+This figure illustrates the relationship between patient age and survival as boxplots. The *red* diamond in each box indicates the mean age. Furthermore, the median age is represented by the blue vertical line in the center of the plot. A jitter plot was overlayed to assist with visualizing the counts in each factor for `survival`. Also, the spread of the ages among the `perished` factor is substantially larger than that of the `survived` factor. Interstingly, it appears that the mean age of those who perished in the ICU is lower than those that did not. One would expect that the more elderly patients would perish in the ICU. Further statistical analysis could determine the significance of this relationship.
+
+
+**Infection vs. Survival**
+\begin{center}
+\includegraphics{../results/infection_survival_barchart}
+\end{center}
+
+This figure demonstrates how the patient's infection status impacts their survival in the ICU. We would expect that patients with infections typically do poorly in the ICU. These infections add another layer of challenges when treating these patients. The bar chart depicts the proportions of survivors in terms of their infection status. As we can see, over 25% of patients with an infection passed away **during** their stay at the ICU. Meanwhile, around 12% of patients without infections passed away **during** their stay.
+
+
+**Emergency vs. Survival**
+\begin{center}
+\includegraphics{../results/emergency_survival_barchart}
+\end{center}
+
+An important factor when examining the survival rates in an ICU is the case type. These can be classified into two broad terms: emergency and elective. Elective is where it is decided that it is in the best interest of the patient to recieve treatment in the ICU, for close observation and care. On the otherhand, emergency cases occur at unpredictably, and the patient usually arrives in worse condition than the elective case patient who is typically already stabilized. From our graph, we can see a significant difference between the two case types. Emergency cases we associated with 25% of deaths in the ICU, while elective cases corresponded to less than < 10% of deaths.
+
+
+
+
