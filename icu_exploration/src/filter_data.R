@@ -27,7 +27,7 @@ main <- function(){
   print(head(icu_data_filter))
   
   #write new csv to results
-  write.csv(icu_data, "../results/icu_data_filter.csv")
+  write.csv(icu_data_filter, "../results/icu_data_filter.csv")
 
 }
 
