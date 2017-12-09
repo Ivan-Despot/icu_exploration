@@ -29,8 +29,8 @@ main <- function(){
     scale_x_discrete(labels = c("Survived", "Perished")) +
     stat_summary(fun.y=mean, colour="darkred", geom="point", shape=18, size=3,show_guide = FALSE) 
   
-  # save plot
-  ggsave(age_plot, file = "age_vs_survival_bxplt.PNG")
+  # save plot in results
+  ggsave(age_plot, filename = "C:/Users/Ivan/Documents/GitHub/DSCI_522_dsci-workflows_students/icu_exploration/icu_exploration/results/age_vs_survival_bxplt.PNG")
   
   #select data for Survive * Infection
   infection_sum <- plot_data %>% 
@@ -39,20 +39,34 @@ main <- function(){
     group_by(Infection, Survive) %>% 
     summarise(total = n())  
   
-  #creat plot for Survive * Infection
+  #create plot for Survive * Infection
   infection_plot <- ggplot(infection_sum, aes(x = Infection, y = total, fill = forcats::fct_recode(Survive, Perished = "0", Survived = "1"))) +
     geom_bar(position = "fill", stat = "identity") + 
     labs(x = "Infection", y = "Proportion", title = "Survivorship between infected and not infected patients") +
     scale_x_discrete(label = c("Not Present", "Infected")) +
     guides(fill = guide_legend(title = "Survival"))
   
-  # save plot
-  ggsave(infection_plot, file = "infection_survival_barchart.PNG")
+  # save plot in results
+  ggsave(infection_plot, filename = "C:/Users/Ivan/Documents/GitHub/DSCI_522_dsci-workflows_students/icu_exploration/icu_exploration/results/infection_survival_barchart.PNG")
   
+  #select data from Survive * Emergency
+  emerg_sum <- plot_data %>% 
+    select(Emergency, Survive) %>% 
+    mutate(Emergency = as.factor(Emergency), Survive = as.factor(Survive)) %>% 
+    group_by(Emergency, Survive) %>% 
+    summarise(total = n())  
   
+  # create plot for Survive * Emergency
+  emerg_plot <- ggplot(emerg_sum, aes(x = Emergency, y = total, fill = forcats::fct_recode(Survive, Perished = "0", Survived = "1"))) +
+    geom_bar(position = "fill", stat = "identity") + 
+    labs(x = "Case Type", y = "Proportion", title = "Survivorship between emergency and elected cases") +
+    scale_x_discrete(label = c("Elective", "Emergency")) +
+    guides(fill = guide_legend(title = "Survival"))
   
-  
-  
+  # save plot in results
+  ggsave(emerg_plot, filename = "C:/Users/Ivan/Documents/GitHub/DSCI_522_dsci-workflows_students/icu_exploration/icu_exploration/results/emergency_survival_barchart.PNG")
   
   
 }
+
+main()
