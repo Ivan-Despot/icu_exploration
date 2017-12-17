@@ -6,8 +6,8 @@
 
 main <- function(){
   
-  icu_data <- read.csv("https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/Stat2Data/ICU.csv", 
-                       header = T, sep = ",")
+    icu_data <- read.csv("https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/Stat2Data/ICU.csv", 
+                         header = T, sep = ",")
   
   #create a snapshot of the read in data.
   out = head(icu_data)
