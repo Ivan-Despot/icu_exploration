@@ -2,22 +2,26 @@
 # plot_data.R
 # Ivan Despot, Nov 2017
 #
-# ************This script filters the raw data in the data set: ../data/icu_data.csv, by Age, 
+# This script plots the filtered data in the data set: ../data/icu_data.csv, by Age, 
 #Infection, Emergency and Survive, and outputs the file as a csv.
 #
-# Usage: Rscript plot_data.R 
-
+# Usage: Rscript plot_data.R results/icu_data_filter.csv icu_exploration/results/
+#
 #Dependencies: tidyverse, ggplot2, forcats
-
+#
 #load dependencies (make sure command line reads correct path)
 .libPaths(c("C:/Users/Ivan/Documents/R/win-library/3.4", "C:/Program Files/R/R-3.4.1/library" ))
 library(tidyverse)
 library(ggplot2)
 library(forcats)
 
+args <- commandArgs(trailingOnly = T)
+input_file <- args[1]
+output_file <- args[2]
+
 main <- function(){
   #read in data
-  plot_data <- read.csv("../results/icu_data_filter.csv")
+  plot_data <- read.csv(input_file)
   
   #create plot for Survive * Age
   age_plot <- ggplot(data = plot_data,
@@ -30,7 +34,7 @@ main <- function(){
     stat_summary(fun.y=mean, colour="darkred", geom="point", shape=18, size=3,show_guide = FALSE) 
   
   # save plot in results
-  ggsave(age_plot, filename = "C:/Users/Ivan/Documents/GitHub/DSCI_522_dsci-workflows_students/icu_exploration/icu_exploration/results/age_vs_survival_bxplt.PNG")
+  ggsave(age_plot, filename = "age_vs_survival_bxplt.PNG", path = output_file)
   
   #select data for Survive * Infection
   infection_sum <- plot_data %>% 
@@ -47,7 +51,7 @@ main <- function(){
     guides(fill = guide_legend(title = "Survival"))
   
   # save plot in results
-  ggsave(infection_plot, filename = "C:/Users/Ivan/Documents/GitHub/DSCI_522_dsci-workflows_students/icu_exploration/icu_exploration/results/infection_survival_barchart.PNG")
+  ggsave(infection_plot, filename = "infection_survival_barchart.PNG", path = output_file)
   
   #select data from Survive * Emergency
   emerg_sum <- plot_data %>% 
@@ -64,7 +68,7 @@ main <- function(){
     guides(fill = guide_legend(title = "Survival"))
   
   # save plot in results
-  ggsave(emerg_plot, filename = "C:/Users/Ivan/Documents/GitHub/DSCI_522_dsci-workflows_students/icu_exploration/icu_exploration/results/emergency_survival_barchart.PNG")
+  ggsave(emerg_plot, filename = "emergency_survival_barchart.PNG", path = output_file)
   
   
 }
