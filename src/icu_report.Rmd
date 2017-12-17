@@ -2,7 +2,7 @@
 title: 'ICU Report'
 author: "Ivan Despot"
 date: "December 9, 2017"
-output: pdf_document
+output: github_document
 ---
 
 Usage: Rscript -e 'ezknitr::ezknit("src/icu_report.Rmd", out_dir = "results")'
