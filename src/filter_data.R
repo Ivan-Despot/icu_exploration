@@ -6,8 +6,8 @@
 #Infection, Emergency and Survive, and outputs the file as a csv.
 #
 # Parameters: input file: https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/Stat2Data/ICU.csv
-#             output file: /data/icu_data.csv
-# Usage: Rscript filter_data.R  data/icu_data.csv results/icu_data_filter.csv
+#             output file: /results/icu_data_filter.csv
+# Usage: Rscript filter_data.R  /data/icu_data.csv results/icu_data_filter.csv
 ############
 
 #Dependencies: tidyverse

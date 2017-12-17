@@ -5,7 +5,7 @@
 # This script plots the filtered data in the data set: ../data/icu_data.csv, by Age, 
 #Infection, Emergency and Survive, and outputs the file as a csv.
 #
-# Usage: Rscript plot_data.R results/icu_data_filter.csv icu_exploration/results/
+# Usage: Rscript plot_data.R results/icu_data_filter.csv icu_exploration/results
 #
 #Dependencies: tidyverse, ggplot2, forcats
 #
