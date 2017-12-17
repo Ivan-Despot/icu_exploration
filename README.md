@@ -8,24 +8,15 @@
   * Age Group (1 = Young[under 50]; 2 = Middle[50-69]; 3 = Old[70+])
   * Survival (1 = Lived to be Discharged; 0 = Deceased)
 
-## How to load in the data:
+## How to use this pipeline:
 
-In your command line, while in the directory for this project -  run the following:
+This project uses Docker. Please make sure you have cloned this repository and installed Docker. To run the analysis, enter the following *general* text into the Docker command line:
 
-`Rscript read_in_data_test.R`
+`docker run --rm -it -v /path-to-the-cloned-repo-on-your-computer/icu_exploration:/home/data_analysis_eg ivandespot/icu_exploration make -C '/home/data_analysis_eg'`
 
-This script will read in the ICU dataset, and write a new file named `icu_data.csv` in the `data` folder.
+To delete all of the files created by the analysis pipeline, run the following command in Docker:
 
-## How to create the clean data set:
-
-After you have run the `read_in_data_test.R` script, you can use the `filter_data.R` script to create a new file in the **results** directory: `icu_data_filter.csv`. This script takes in the original `icu_data.csv` file, and cleans it up!
-
-## How to generate the plots:
-
-To create a few plots of the data, run `plot_data.R` in your command line. This script will take the cleaned data set (`icu_data_filter.csv`) and output three graphs in the **results** directory.
-
-## Putting it all together:
-To create a summary report of all of the steps and findings, you can open the `icu_report.Rmd` file in the `src` directory. This file will knit the results into a summary PDF.
+`docker run --rm -it -v /path-to-the-cloned-repo-on-your-computer/icu_exploration:/home/data_analysis_eg ivandespot/icu_exploration make -C '/home/data_analysis_eg' clean`
 
 ## Research Question:
 
@@ -37,11 +28,9 @@ Alternative hypothesis: There are significant differences between survival and a
 
 ## Data Summary and Visualization:
 
-I would first summarize the data by finding the mean differences between the groups. This will be our test statistic. Next, we will use ANOVA to test for significance with multiple comparisons.
+Data will be filtered according to infection status, case type and age. Categorical data would be visualized in a bar chart (for example: Age ~ Survival). Discrete data would be visualized in a box plot (for example: Infection ~ Survival).
 
-Categorical data would be visualized in a bar chart (for example: Age ~ Survival).
-
-Discrete data would be visualized in a box plot (for example: Infection ~ Survival).
+Our visualizations suggest that there are noticable differences in the survival rate depending on the case type, infection status, and age.
 
 ## Author
 
